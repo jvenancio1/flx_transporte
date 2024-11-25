@@ -40,7 +40,7 @@ export default function Properties({}) {
         colorScheme: "green",
       });
       utils.users.getMany.invalidate();
-      router.replace(`/usuario/${res.id}`);
+      router.replace(`/usuarios/${res.id}`);
     },
     onError: (err) => {
       toast({
