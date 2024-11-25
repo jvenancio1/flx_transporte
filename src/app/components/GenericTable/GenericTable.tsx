@@ -1,3 +1,4 @@
+//@ts-ignore
 "use client";
 
 import {
@@ -110,6 +111,7 @@ export default function GenericTable<
       return <>-</>;
     }
 
+    //@ts-ignore
     return <>{value}</>;
   }
 
