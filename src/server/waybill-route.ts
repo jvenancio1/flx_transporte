@@ -164,7 +164,6 @@ const waybillRouter = trpc.router({
           weight: z.number().optional(),
           value_cte: z.number().optional(),
           total_cte: z.number().optional(),
-          userId: z.number(),
           client: z.string().optional(),
         }),
       }),
