@@ -58,8 +58,8 @@ export default function Properties({ id }: PropertiesProps) {
         description: "Processo atualizado com sucesso",
         colorScheme: "green",
       });
-      utils.users.getMany.invalidate();
-      utils.users.get.invalidate(res.id);
+      utils.waybill.getMany.invalidate();
+      utils.waybill.get.invalidate(res.id);
       router.replace(`/romaneio/${res.id}`);
       setIsEditing(false);
     },
