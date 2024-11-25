@@ -61,7 +61,7 @@ export default function Properties({ id }: PropertiesProps) {
         colorScheme: "green",
       });
       queryClient.invalidateQueries({ queryKey: ["course"] });
-      router.replace(`/romaneio/${res}`);
+      router.replace(`/romaneio/${res.id}`);
       setIsEditing(false);
     },
     onError: (err) => {
