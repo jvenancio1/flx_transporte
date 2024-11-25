@@ -1,5 +1,6 @@
 "use client";
 
+import { apiUrl } from "@/utils/constants";
 import { trpc } from "@/utils/trpc";
 import { CacheProvider } from "@chakra-ui/next-js";
 import { ChakraProvider } from "@chakra-ui/react";
@@ -13,9 +14,6 @@ export type ProvidersProps = {
   children?: ReactNode | ReactNode[];
 };
 export default function Providers({ children }: ProvidersProps) {
-  const apiUrl = "http://localhost:3000";
-  console.log(apiUrl);
-
   const trpcClient = useMemo(
     () =>
       trpc.createClient({
