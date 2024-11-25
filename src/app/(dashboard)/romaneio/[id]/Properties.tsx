@@ -16,7 +16,6 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -46,9 +45,8 @@ type FormValues = z.infer<typeof schema>;
 export default function Properties({ id }: PropertiesProps) {
   const toast = useToast();
   const [isEditing, setIsEditing] = useState(false);
-  const queryClient = useQueryClient();
   const router = useRouter();
-
+  const utils = trpc.useUtils();
   const { data: processData } = trpc.waybill.get.useQuery(id);
 
   if (processData == null) return <ErrorMessage />;
@@ -60,7 +58,8 @@ export default function Properties({ id }: PropertiesProps) {
         description: "Processo atualizado com sucesso",
         colorScheme: "green",
       });
-      queryClient.invalidateQueries({ queryKey: ["course"] });
+      utils.users.getMany.invalidate();
+      utils.users.get.invalidate(res.id);
       router.replace(`/romaneio/${res.id}`);
       setIsEditing(false);
     },
