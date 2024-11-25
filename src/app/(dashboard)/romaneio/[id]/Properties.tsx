@@ -77,7 +77,6 @@ export default function Properties({ id }: PropertiesProps) {
     await mutateAsync({
       data: {
         ...values,
-        userId: 1,
       },
       id: id,
     });
